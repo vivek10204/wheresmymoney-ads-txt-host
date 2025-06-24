@@ -1,37 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Where's My Money? : FinTracker</title>
   <style>
-    body { font-family: sans-serif; max-width: 700px; margin: auto; padding: 2em; background: #f7f7f7; }
-    h1 { font-size: 2em; }
-    .screenshot { max-width: 100%; border: 1px solid #ccc; margin-bottom: 1em; }
-    .badge { margin-top: 1em; }
-    a { text-decoration: none; color: #3366cc; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #fafafa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 1em;
+      text-align: center;
+    }
+    header img {
+      width: 80px;
+      vertical-align: middle;
+    }
+    header h1 {
+      font-size: 1.8em;
+      margin: 0.2em 0 0;
+    }
+    header p {
+      font-size: 1.1em;
+      color: #555;
+    }
+    .banner {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+    }
+    .section {
+      padding: 2em;
+      max-width: 900px;
+      margin: auto;
+    }
+    .features ul {
+      list-style: none;
+      padding: 0;
+    }
+    .features li {
+      margin: 1em 0;
+    }
+    .screenshots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+    }
+    .screenshots img {
+      width: 280px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .play-badge {
+      text-align: center;
+      margin: 2em 0;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      padding: 2em;
+    }
   </style>
 </head>
 <body>
-  <h1>Where's My Money? : FinTracker</h1>
-  <p><strong>Visual finance tracker</strong> that helps you track SMS, UPI, credit cards, stocks, and spending patterns — all on your device with full privacy.</p>
+  <header>
+    <img src="icon1.png" alt="App Icon" />
+    <h1>Where's My Money? : FinTracker</h1>
+    <p>Visualize your finances. Import from SMS & UPI. Analyze expenses & stocks. All offline.</p>
+  </header>
 
-  <ul>
-    <li>📊 Line & Pie charts</li>
-    <li>📥 Auto-import from SMS, UPI</li>
-    <li>🍽️ Smart merchant categorization</li>
-    <li>📈 Track stock prices & expenses</li>
-    <li>🔐 No cloud. No login. Full privacy.</li>
-  </ul>
+  <img src="feature_graphic2.jpg" alt="Feature Graphic" class="banner" />
 
-  <p>Download now:</p>
-  <div class="badge">
+  <div class="section features">
+    <h2>Features</h2>
+    <ul>
+      <li>📊 Import expenses from SMS, UPI, or bank statements</li>
+      <li>📈 Analyze data with line and pie charts</li>
+      <li>🍽️  Auto-categorize merchants (e.g., Zomato → Food)</li>
+      <li>🧾 Import CSV/Excel files and stock price data</li>
+      <li>🔐 All data stays on your phone — no servers, no cloud</li>
+    </ul>
+  </div>
+
+  <div class="section screenshots">
+    <img src="upload1.png" alt="Screenshot 1" />
+    <img src="upload2.png" alt="Screenshot 2" />
+    <img src="upload3.png" alt="Screenshot 3" />
+    <img src="upload4.png" alt="Screenshot 4" />
+  </div>
+
+  <div class="play-badge">
     <a href="https://play.google.com/store/apps/details?id=com.wheresmymoney.wheresmymoney" target="_blank">
-      <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
-           alt="Get it on Google Play" width="200">
+      <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200" alt="Get it on Google Play">
     </a>
   </div>
 
-  <p>Need help? Contact us at <a href="mailto:support@wheresmymoney.xyz">support@wheresmymoney.xyz</a></p>
+  <footer>
+    <p>Contact: <a href="mailto:support@wheresmymoney.xyz">support@wheresmymoney.xyz</a></p>
+    <p>© 2025 Where's My Money? App</p>
+  </footer>
 </body>
 </html>
