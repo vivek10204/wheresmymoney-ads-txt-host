@@ -60,7 +60,7 @@
     /* --- HERO SECTION --- */
     header {
       background: var(--bg-header);
-      padding: 3rem 0 5rem; /* Extra padding bottom for banner overlap */
+      padding: 3rem 0 5rem;
       text-align: center;
       border-bottom: 1px solid #d1d5db;
     }
@@ -100,7 +100,7 @@
       margin: 0 auto 2rem;
     }
 
-    /* FIXED: Flexbox centering for the button */
+    /* CENTER BUTTON WRAPPER */
     .cta-wrapper {
       display: flex;
       justify-content: center;
@@ -116,7 +116,7 @@
     .cta-wrapper img:hover { transform: translateY(-3px); }
 
     .banner-wrapper {
-      margin-top: -4rem; /* Pulls banner up into header */
+      margin-top: -4rem;
       padding: 0 1rem;
       position: relative;
       z-index: 10;
@@ -129,13 +129,20 @@
       border: 4px solid #ffffff;
     }
 
-    /* --- AI SPOTLIGHT SECTION (Dark Theme) --- */
+    /* --- AI SPOTLIGHT SECTION (FIXED ALIGNMENT) --- */
     .ai-section {
       background: var(--gradient-ai);
       color: #ffffff;
       padding: 4rem 0;
       margin-top: 4rem;
-      text-align: center;
+    }
+    
+    /* Strict Flexbox Centering for AI Content */
+    .ai-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Horizontally center all items */
+      text-align: center;  /* Ensure text inside items is centered */
     }
     
     .ai-content h2 {
@@ -160,10 +167,11 @@
 
     .ai-desc {
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0; /* Margin handled by flex gap/padding now, simpler */
       font-size: 1.1rem;
       opacity: 0.9;
       color: #d1d5db;
+      line-height: 1.7;
     }
 
     /* --- FEATURES GRID --- */
@@ -190,7 +198,7 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow-soft);
       transition: all 0.3s ease;
-      border: 1px solid #ffffff; /* Subtle white border */
+      border: 1px solid #ffffff;
     }
 
     .card:hover {
@@ -203,7 +211,7 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       display: inline-block;
-      background: #e5e7eb; /* Grey circle */
+      background: #e5e7eb;
       padding: 0.75rem;
       border-radius: 50%;
     }
@@ -220,7 +228,7 @@
 
     /* --- SCREENSHOTS --- */
     .screenshots-section {
-      background: #d1d5db; /* Darker grey strip for screenshots */
+      background: #d1d5db;
       padding: 4rem 0;
       text-align: center;
     }
@@ -247,7 +255,7 @@
 
     /* --- FOOTER --- */
     footer {
-      background: #111827; /* Almost Black */
+      background: #111827;
       color: #9ca3af;
       text-align: center;
       padding: 4rem 0;
