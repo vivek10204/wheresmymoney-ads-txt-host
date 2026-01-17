@@ -4,33 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Where's My Money? : Budget AI</title>
-  <meta name="description" content="Track & Chart Expenses with a Private AI Assistant. Finance made easy with automatic SMS/UPI tracking and stock analysis.">
+  <meta name="description" content="Track & Chart Expenses with a Private AI Assistant. Finance made easy with automatic SMS/UPI tracking.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* --- RESET & BASE STYLES --- */
+    /* --- THEME VARIABLES (GREY SCALE) --- */
     :root {
-      --primary: #2563eb;       /* Trustworthy Blue */
-      --primary-dark: #1e40af;
-      --accent: #8b5cf6;        /* AI Purple */
-      --text-main: #1f2937;
-      --text-muted: #6b7280;
-      --bg-light: #f3f4f6;
-      --white: #ffffff;
-      --gradient-hero: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
-      --gradient-ai: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --radius: 12px;
+      --primary: #4b5563;       /* Slate Grey */
+      --primary-dark: #1f2937;  /* Charcoal */
+      --accent: #2563eb;        /* Tech Blue (kept for buttons/links) */
+      
+      --bg-body: #e5e7eb;       /* Darker Grey Background */
+      --bg-card: #f9fafb;       /* Off-white Card */
+      --bg-header: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+      
+      --gradient-ai: linear-gradient(135deg, #374151 0%, #111827 100%); /* Dark Slate Gradient */
+      
+      --text-main: #111827;     /* Almost Black */
+      --text-muted: #4b5563;    /* Medium Grey */
+      
+      --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      
+      --radius: 16px;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg-light);
+      background: var(--bg-body);
       color: var(--text-main);
       margin: 0;
       padding: 0;
@@ -40,7 +44,7 @@
     h1, h2, h3 {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      color: #111827;
+      color: var(--primary-dark);
     }
 
     a { text-decoration: none; transition: 0.2s; }
@@ -48,17 +52,17 @@
 
     /* --- LAYOUT UTILS --- */
     .container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
     /* --- HERO SECTION --- */
     header {
-      background: var(--gradient-hero);
-      padding: 3rem 0 4rem;
+      background: var(--bg-header);
+      padding: 3rem 0 5rem; /* Extra padding bottom for banner overlap */
       text-align: center;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #d1d5db;
     }
 
     .brand {
@@ -66,81 +70,92 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .brand img {
-      width: 64px;
-      height: 64px;
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
+      width: 72px;
+      height: 72px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
     }
 
     .brand h1 {
       font-size: 1.8rem;
       font-weight: 700;
-      background: -webkit-linear-gradient(45deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text-main);
     }
 
     .hero-text h2 {
-      font-size: 2.5rem;
-      line-height: 1.2;
+      font-size: 2.2rem;
+      line-height: 1.25;
       margin-bottom: 1rem;
+      color: var(--text-main);
     }
 
     .hero-text p {
-      font-size: 1.125rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       max-width: 600px;
       margin: 0 auto 2rem;
     }
 
-    .cta-badge img {
-      width: 200px;
-      transition: transform 0.2s;
+    /* FIXED: Flexbox centering for the button */
+    .cta-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 2rem;
     }
-    .cta-badge img:hover { transform: scale(1.05); }
+
+    .cta-wrapper img {
+      width: 180px;
+      height: auto;
+      transition: transform 0.2s ease;
+    }
+    .cta-wrapper img:hover { transform: translateY(-3px); }
 
     .banner-wrapper {
-      margin-top: -3rem;
+      margin-top: -4rem; /* Pulls banner up into header */
       padding: 0 1rem;
+      position: relative;
+      z-index: 10;
     }
     
     .banner {
       border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-hover);
       margin: 0 auto;
-      border: 4px solid var(--white);
+      border: 4px solid #ffffff;
     }
 
-    /* --- AI SPOTLIGHT SECTION --- */
+    /* --- AI SPOTLIGHT SECTION (Dark Theme) --- */
     .ai-section {
       background: var(--gradient-ai);
-      color: var(--white);
+      color: #ffffff;
       padding: 4rem 0;
       margin-top: 4rem;
-      border-radius: 0;
       text-align: center;
     }
     
     .ai-content h2 {
-      color: var(--white);
+      color: #ffffff;
       font-size: 2rem;
       margin-bottom: 1rem;
     }
     
     .ai-badge {
-      background: rgba(255,255,255,0.2);
-      padding: 0.25rem 0.75rem;
-      border-radius: 99px;
-      font-size: 0.875rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 1px;
       display: inline-block;
       margin-bottom: 1rem;
+      color: #e5e7eb;
     }
 
     .ai-desc {
@@ -148,6 +163,7 @@
       margin: 0 auto;
       font-size: 1.1rem;
       opacity: 0.9;
+      color: #d1d5db;
     }
 
     /* --- FEATURES GRID --- */
@@ -159,33 +175,35 @@
       text-align: center;
       margin-bottom: 3rem;
       font-size: 2rem;
+      color: var(--primary-dark);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
     .card {
-      background: var(--white);
+      background: var(--bg-card);
       padding: 2rem;
       border-radius: var(--radius);
-      box-shadow: var(--shadow-md);
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid #f0f0f0;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+      border: 1px solid #ffffff; /* Subtle white border */
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-hover);
+      background: #ffffff;
     }
 
     .card-icon {
       font-size: 2rem;
       margin-bottom: 1rem;
       display: inline-block;
-      background: #eff6ff;
+      background: #e5e7eb; /* Grey circle */
       padding: 0.75rem;
       border-radius: 50%;
     }
@@ -202,7 +220,7 @@
 
     /* --- SCREENSHOTS --- */
     .screenshots-section {
-      background: var(--white);
+      background: #d1d5db; /* Darker grey strip for screenshots */
       padding: 4rem 0;
       text-align: center;
     }
@@ -211,43 +229,50 @@
       display: flex;
       gap: 1.5rem;
       overflow-x: auto;
-      padding: 1rem;
-      justify-content: center; /* Center on large screens */
+      padding: 1.5rem 0.5rem;
+      justify-content: center; 
       flex-wrap: wrap;
     }
     
     .scroll-container img {
       width: 240px;
-      border-radius: 12px;
-      border: 2px solid #f3f4f6;
-      box-shadow: var(--shadow-md);
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+    
+    .scroll-container img:hover {
+      transform: scale(1.02);
     }
 
     /* --- FOOTER --- */
     footer {
-      background: #111827;
+      background: #111827; /* Almost Black */
       color: #9ca3af;
       text-align: center;
-      padding: 3rem 0;
+      padding: 4rem 0;
     }
     
     footer a {
-      color: var(--white);
+      color: #e5e7eb;
       font-weight: 500;
     }
     
     footer a:hover {
-      color: var(--primary);
+      color: #ffffff;
+      text-decoration: underline;
     }
 
     /* --- MOBILE RESPONSIVE --- */
     @media (max-width: 768px) {
-      .hero-text h2 { font-size: 2rem; }
+      .hero-text h2 { font-size: 1.8rem; }
       .scroll-container { 
-        justify-content: flex-start; /* Enable scrolling on mobile */
+        justify-content: flex-start;
         flex-wrap: nowrap;
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
-      .scroll-container img { width: 200px; }
+      .scroll-container img { width: 180px; }
       .brand { flex-direction: column; gap: 0.5rem; }
     }
   </style>
@@ -265,7 +290,7 @@
         <h2>Track & Chart Expenses with<br>a Private AI Assistant</h2>
         <p>Finance made easy. Visualize where your money goes with automatic tracking, smart insights, and zero privacy compromise.</p>
         
-        <div class="cta-badge">
+        <div class="cta-wrapper">
           <a href="https://play.google.com/store/apps/details?id=com.wheresmymoney.wheresmymoney" target="_blank">
             <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
           </a>
@@ -285,7 +310,7 @@
       <p class="ai-desc">
         Meet your <strong>Private AI Expense Assistant</strong>. Just ask "How much did I spend on food this week?" or "Summarize my recent transactions." 
         <br><br>
-        Using advanced <strong>RAG Technology</strong>, the AI analyzes your active charts instantly to give you data-backed answers. No cloud uploads. 100% Offline.
+        Using advanced <strong>RAG Technology</strong>, the AI analyzes your active charts instantly. 100% Offline.
       </p>
     </div>
   </section>
@@ -352,7 +377,7 @@
       <p>Need help or have a suggestion?</p>
       <p><a href="mailto:wheresmymoney567@gmail.com">wheresmymoney567@gmail.com</a></p>
       <br>
-      <p>© 2025 Where's My Money? : Budget AI. All rights reserved.</p>
+      <p>© 2025 Where's My Money? : Budget AI.</p>
     </div>
   </footer>
 
